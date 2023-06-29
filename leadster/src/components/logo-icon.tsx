@@ -4,8 +4,8 @@ export default function LogoIcon() {
   return (
     <Image
       src='/imgs/logo.png'
-      width={41}
-      height={9}
+      width={50}
+      height={10}
       alt="logo"
       title='logo'
     />
