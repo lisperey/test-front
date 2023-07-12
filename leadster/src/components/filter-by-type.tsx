@@ -1,4 +1,6 @@
 "use client"
+import { useFilter } from "@/app/hooks/useFilter";
+import { FilterTypes } from "@/types/filter-types";
 import { styled } from "styled-components";
 
 interface FilterByTypeProps{
@@ -19,14 +21,20 @@ const TagButton = styled.button<FilterByTypeProps>`
 
 `
 
+
 export function FilterByType(){
+    const { type, setType }= useFilter();
+
+    const handleChangeType = (value: FilterTypes) =>{
+        setType(value)
+    }
     return(
         <div>
-            <TagButton selected>Agências</TagButton>
-            <TagButton selected={false}>Chatbot</TagButton>
-            <TagButton selected={false}>Marketing Digital</TagButton>
-            <TagButton selected={false}>Geração de Leads</TagButton>
-            <TagButton selected={false}>Mídia Paga</TagButton>
+            <TagButton selected={type === FilterTypes.AGENCIA} onClick={()=> handleChangeType(FilterTypes.AGENCIA)}>Agências</TagButton>
+            <TagButton selected={type === FilterTypes.CHATBOT} onClick={()=> handleChangeType(FilterTypes.CHATBOT)}>Chatbot</TagButton>
+            <TagButton selected={type === FilterTypes.MARKETING} onClick={()=> handleChangeType(FilterTypes.MARKETING)}>Marketing Digital</TagButton>
+            <TagButton selected={type === FilterTypes.LEADS} onClick={()=> handleChangeType(FilterTypes.LEADS)}>Geração de Leads</TagButton>
+            <TagButton selected={type === FilterTypes.MIDIA} onClick={()=> handleChangeType(FilterTypes.MIDIA)}>Mídia Paga</TagButton>
         </div>
     )
 }

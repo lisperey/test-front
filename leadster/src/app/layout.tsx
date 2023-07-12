@@ -4,6 +4,7 @@ import { HeaderLogo } from '@/components/header-logo';
 import { Header } from '@/components/header';
 import { FilterContextProvider } from './contexts/filter-context';
 import { Plus_Jakarta_Sans } from 'next/font/google';
+import { FilterBar } from '@/components/filter-bar';
 
 
 const regular = Plus_Jakarta_Sans({
@@ -25,11 +26,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={regular.className}>
-      <FilterContextProvider>
+        <FilterContextProvider>
           <HeaderLogo/>
           <Header/>
+          <FilterBar/>
+          <HeaderLogo/>
           {children}
-        </FilterContextProvider>
+        </FilterContextProvider> 
       </body>
     </html>
   )
